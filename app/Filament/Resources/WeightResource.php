@@ -65,4 +65,6 @@ class WeightResource extends Resource
             'edit' => Pages\EditWeight::route('/{record}/edit'),
         ];
     }
+
+
 }
