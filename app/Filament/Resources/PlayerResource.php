@@ -4,11 +4,13 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PlayerResource\Pages;
 use App\Models\Player;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 
 class PlayerResource extends Resource
@@ -27,7 +29,10 @@ class PlayerResource extends Resource
             ->schema([
                 TextInput::make('name')
                     ->required(),
+                FileUpload::make('avatar')
+                    ->image(),
             ]);
+
     }
 
     public static function table(Table $table): Table
@@ -37,6 +42,8 @@ class PlayerResource extends Resource
                 TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
+                ImageColumn::make('avatar')
+                    ->circular()
             ]);
     }
 

@@ -8,6 +8,7 @@ class Player extends Model
 {
     protected $fillable = [
         'name',
+        'avatar',
     ];
 
     public function tournaments()
