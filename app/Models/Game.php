@@ -4,24 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tournament extends Model
+class Game extends Model
 {
     protected $fillable = [
         'player_id',
-        'name',
-        'field_name',
+        'tournament_id',
+        'date',
+        'time',
         'address',
         'city',
         'state',
         'zip_code',
-        'start_date',
-        'end_date',
-        'placed',
+        'opponent_name',
+        'team_score',
+        'opponent_score',
     ];
 
     protected $casts = [
-        'start_date' => 'datetime',
-        'end_date' => 'datetime',
+        'date' => 'datetime',
+        'time' => 'datetime',
     ];
 
     public function player()
@@ -29,8 +30,8 @@ class Tournament extends Model
         return $this->belongsTo(Player::class);
     }
 
-    public function games()
+    public function tournament()
     {
-        return $this->hasMany(Game::class);
+        return $this->belongsTo(Tournament::class);
     }
 }
