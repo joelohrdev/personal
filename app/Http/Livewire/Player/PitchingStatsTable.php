@@ -17,7 +17,7 @@ class PitchingStatsTable extends Component
     public function render()
     {
         return view('livewire.player.pitching-stats-table', [
-            'pitchingStats' => $this->player->playerStats()->orderBy('game_id', 'desc')->get(),
+            'pitchingStats' => $this->player->playerStats()->where('player_pitch_ip', '!=', '')->orderBy('game_id', 'desc')->get(),
         ]);
     }
 }
