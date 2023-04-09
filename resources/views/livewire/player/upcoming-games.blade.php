@@ -18,7 +18,13 @@
                             <td class="whitespace-nowrap py-2 pl-0 pr-2 text-sm text-gray-500">{{ $game->date->format('F d, Y') }}</td>
                             <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ $game->tournament->name ?? '-' }}</td>
                             <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ $game->time->format('g:i A') }}</td>
-                            <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ $game->city }}, {{ $game->state }}</td>
+                            <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">
+                                @if($game->city)
+                                    {{ $game->city }}, {{ $game->state }}
+                                @else
+                                    {{ __('-') }}
+                                @endif
+                            </td>
                             <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ $game->opponent_name }}</td>
                         </tr>
                     @endforeach
