@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PlayerResource\Pages;
 use App\Models\Player;
+use Closure;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
@@ -12,6 +13,7 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Str;
 
 class PlayerResource extends Resource
 {
@@ -28,7 +30,12 @@ class PlayerResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')
+                    ->reactive()
+                    ->afterStateUpdated(function (Closure $set, $state) {
+                        $set('slug', Str::slug($state));
+                    })
                     ->required(),
+                TextInput::make('slug'),
                 FileUpload::make('avatar')
                     ->image(),
             ]);
