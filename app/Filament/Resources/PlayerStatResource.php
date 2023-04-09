@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PlayerStatResource\Pages;
+use App\Models\Game;
 use App\Models\PlayerStat;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
@@ -27,13 +28,14 @@ class PlayerStatResource extends Resource
         return $form
             ->schema([
                 Select::make('player_id')
+                    ->reactive()
                     ->options(function () {
                         return \App\Models\Player::all()->pluck('name', 'id');
                     })->label('Player'),
 
                 Select::make('game_id')
-                    ->options(function () {
-                        return \App\Models\Game::all()->pluck('date', 'id');
+                    ->options(function (\Closure $get) {
+                        return Game::where('player_id', $get('player_id'))->get()->pluck('date', 'id');
                     })->label('Game'),
 
                 TextInput::make('player_ab')

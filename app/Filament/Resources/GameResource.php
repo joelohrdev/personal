@@ -29,11 +29,13 @@ class GameResource extends Resource
         return $form
             ->schema([
                 Select::make('player_id')
+                    ->label('Player')
                     ->options(function () {
                         return \App\Models\Player::all()->pluck('name', 'id');
                     }),
 
                 Select::make('tournament_id')
+                    ->label('Tournament')
                     ->options(function () {
                         return \App\Models\Tournament::all()->pluck('name', 'id');
                     }),

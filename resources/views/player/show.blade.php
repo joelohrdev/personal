@@ -53,6 +53,21 @@
                             :class="isSelected($el.id) ? 'border-gray-200 bg-white' : 'border-transparent'"
                             class="inline-flex rounded-t-md border-t border-l border-r px-5 py-2.5"
                             role="tab"
+                        >Upcoming Games</button>
+                    </li>
+
+                    <li>
+                        <button
+                            :id="$id('tab', whichChild($el.parentElement, $refs.tablist))"
+                            @click="select($el.id)"
+                            @mousedown.prevent
+                            @focus="select($el.id)"
+                            type="button"
+                            :tabindex="isSelected($el.id) ? 0 : -1"
+                            :aria-selected="isSelected($el.id)"
+                            :class="isSelected($el.id) ? 'border-gray-200 bg-white' : 'border-transparent'"
+                            class="inline-flex rounded-t-md border-t border-l border-r px-5 py-2.5"
+                            role="tab"
                         >Hitting</button>
                     </li>
 
@@ -75,6 +90,15 @@
                 <!-- Panels -->
                 <div role="tabpanels" class="rounded-b-md border border-gray-200 bg-white">
                     <!-- Panel -->
+                    <section
+                        x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))"
+                        :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))"
+                        role="tabpanel"
+                        class="p-8"
+                    >
+                        <livewire:player.upcoming-games :player="$player" />
+                    </section>
+
                     <section
                         x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))"
                         :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))"
