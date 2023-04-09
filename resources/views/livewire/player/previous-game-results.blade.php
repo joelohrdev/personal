@@ -10,7 +10,6 @@
                         <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Location</th>
                         <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Opponent</th>
                         <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Score</th>
-                        <th></th>
                     </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 bg-white">
@@ -29,14 +28,19 @@
                                 @endif
                             </td>
                             <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ $game->opponent_name }}</td>
-                            <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ $game->team_score }} - {{ $game->opponent_score }}</td>
                             <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">
                                 @if($game->team_score > $game->opponent_score)
-                                    <span class="inline-flex items-center rounded bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">Win</span>
+                                    <span class="inline-flex items-center rounded bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
+                                        {{ $game->team_score }} - {{ $game->opponent_score }}
+                                    </span>
                                 @elseif($game->team_score < $game->opponent_score)
-                                    <span class="inline-flex items-center rounded bg-red-100 px-2 py-0.5 text-xs font-medium text-red-800">Loss</span>
+                                    <span class="inline-flex items-center rounded bg-red-100 px-2 py-0.5 text-xs font-medium text-red-800">
+                                        {{ $game->team_score }} - {{ $game->opponent_score }}
+                                    </span>
                                 @else
-                                    <span class="inline-flex items-center rounded bg-yellow-100 px-2 py-0.5 text-xs font-medium text-yellow-800">Tie</span>
+                                    <span class="inline-flex items-center rounded bg-yellow-100 px-2 py-0.5 text-xs font-medium text-yellow-800">
+                                        {{ $game->team_score }} - {{ $game->opponent_score }}
+                                    </span>
                                 @endif
                             </td>
                         </tr>
