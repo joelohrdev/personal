@@ -5,7 +5,7 @@
         <aside class="fixed bottom-0 left-20 top-16 hidden w-96 overflow-y-auto border-r border-gray-200 px-4 py-6 sm:px-6 lg:px-8 xl:block">
             <livewire:player.player-details :player="$player" />
         </aside>
-        <main class="xl:pl-96 space-y-24">
+        <main class="xl:pl-96 space-y-10">
 
             <livewire:team-stats :player="$player" />
 
