@@ -7,6 +7,8 @@
         </aside>
         <main class="xl:pl-96 space-y-24">
 
+            <livewire:team-stats :player="$player" />
+
             <!-- Tabs -->
             <div
                 x-data="{
