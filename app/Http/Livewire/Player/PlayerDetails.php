@@ -19,7 +19,7 @@ class PlayerDetails extends Component
     public function render()
     {
         return view('livewire.player.player-details', [
-            'battingAvg' => number_format($this->hits / $this->atBats, 3) ?? '',
+            'battingAvg' => number_format($this->hits / $this->atBats, 3) ?? '0.000',
         ]);
     }
 }
