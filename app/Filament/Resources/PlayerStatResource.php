@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PlayerStatResource\Pages;
 use App\Models\Game;
 use App\Models\PlayerStat;
+use Closure;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -34,9 +35,10 @@ class PlayerStatResource extends Resource
                     })->label('Player'),
 
                 Select::make('game_id')
-                    ->options(function (\Closure $get) {
+                    ->options(function (Closure $get) {
                         return Game::where('player_id', $get('player_id'))->get()->pluck('date', 'id');
-                    })->label('Game'),
+                    })
+                    ->label('Game'),
 
                 TextInput::make('player_ab')
                     ->numeric()
