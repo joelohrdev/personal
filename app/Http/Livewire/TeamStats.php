@@ -24,9 +24,9 @@ class TeamStats extends Component
             ->count();
         $this->gamesWonCount = Game::where('player_id', $this->player->id)
             ->where('date', '<', now())
-            ->where('team_score', '>', 'opponent_score')
+            ->whereColumn('team_score', '>', 'opponent_score')
             ->count();
-        $this->avg = number_format($this->gameTotalCount / $this->gamesWonCount, 3);
+        $this->avg = number_format($this->gamesWonCount / $this->gameTotalCount, 3);
 
     }
     public function render()
