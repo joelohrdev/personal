@@ -26,7 +26,11 @@ class TeamStats extends Component
             ->where('date', '<', now())
             ->whereColumn('team_score', '>', 'opponent_score')
             ->count();
-        $this->avg = number_format($this->gamesWonCount / $this->gameTotalCount, 3);
+        if ($this->gameTotalCount > 0) {
+            $this->avg = number_format($this->gamesWonCount / $this->gameTotalCount, 3);
+        } else {
+            $this->avg = 0;
+        }
 
     }
     public function render()
