@@ -13,6 +13,9 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
+use PhpParser\Builder;
 
 class GameResource extends Resource
 {
@@ -87,6 +90,9 @@ class GameResource extends Resource
                 TextColumn::make('team_score'),
 
                 TextColumn::make('opponent_score'),
+            ])
+            ->filters([
+                SelectFilter::make('player')->relationship('player', 'name'),
             ]);
     }
 
