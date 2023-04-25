@@ -11,7 +11,12 @@ class UpcomingGames extends Component
     public function render()
     {
         return view('livewire.player.upcoming-games', [
-            'games' => $this->player->games()->where('date', '>', now())->orderBy('date', 'asc')->get(),
+            'games' => $this->player
+                ->games()
+                ->where('date', '>', now())
+                ->orderBy('date', 'asc')
+                ->orderBy('time', 'asc')
+                ->get(),
         ]);
     }
 }

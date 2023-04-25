@@ -11,7 +11,12 @@ class PreviousGameResults extends Component
     public function render()
     {
         return view('livewire.player.previous-game-results', [
-            'games' => $this->player->games()->where('date', '<', now())->orderBy('date', 'desc')->get(),
+            'games' => $this->player
+                ->games()
+                ->where('date', '<', now())
+                ->orderBy('date', 'desc')
+                ->orderBy('time', 'desc')
+                ->get(),
         ]);
     }
 }
