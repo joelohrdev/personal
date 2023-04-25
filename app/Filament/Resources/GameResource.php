@@ -77,12 +77,8 @@ class GameResource extends Resource
                     ->sortable(),
 
                 TextColumn::make('date')
-                    ->date(),
-
-                TextColumn::make('time')
-                    ->time('g:i A'),
-
-                TextColumn::make('city'),
+                    ->date()
+                ->sortable(),
 
                 TextColumn::make('state'),
 
